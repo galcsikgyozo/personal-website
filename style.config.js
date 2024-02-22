@@ -16,16 +16,33 @@ module.exports = {
 
   // Colors
   themeColors: {
-    body: "#A1A3A8",
-    background: "#17191D",
-    iconBackground: "#22252A",
-    primary: "#F1F3F9",
+    body: '#A1A3A8',
+    background: '#17191D',
+    iconBackground: '#22252A',
+    primary: '#F1F3F9',
   },
 
   // Typography
   fontFamilies: {
-    'system': [ "-apple-system", "BlinkMacSystemFont", '"Segoe UI"', "Roboto", '"Helvetica Neue"', "Arial", "sans-serif" ],
-    'mono': [ "ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", '"Liberation Mono"', '"Courier New"', "monospace" ],
-    'inter': ["Inter", "sans-serif"],
+    system: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+    ],
+    mono: [
+      'ui-monospace',
+      'SFMono-Regular',
+      'Menlo',
+      'Monaco',
+      'Consolas',
+      '"Liberation Mono"',
+      '"Courier New"',
+      'monospace',
+    ],
+    inter: ['Inter', 'sans-serif'],
   },
-};
+}

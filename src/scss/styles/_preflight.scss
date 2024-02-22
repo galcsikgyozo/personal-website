@@ -1,33 +1,39 @@
 // 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 // 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
 // 3. Disable tap highlights on iOS
-*, ::before, ::after {
+*,
+::before,
+::after {
   box-sizing: border-box;
-  @apply border-0 border-current border-solid;
+  @apply border-0 border-solid border-current;
   -webkit-tap-highlight-color: transparent;
   outline: 0;
   font-size: inherit;
   font-weight: inherit;
 
-  // h1, h2, h3, h4, h5, h6 
+  // h1, h2, h3, h4, h5, h6
   // blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre
   // fieldset
   // legend
   // fieldset
   // dialog
   // ul, ol, menu
-  @apply m-0 p-0;  
+  @apply m-0 p-0;
 }
 
-::before, ::after {
-  --tw-content: "";
+::before,
+::after {
+  --tw-content: '';
 }
 
 // Remove autofill background from inputs in WebKit/Blink.
-input, select, textarea {
+input,
+select,
+textarea {
   @apply bg-inherit;
 
-  &:focus, &:hover {
+  &:focus,
+  &:hover {
     &:-webkit-autofill {
       @apply bg-transparent;
       -webkit-box-shadow: 0 0 0px 1000px white inset;
@@ -41,10 +47,11 @@ input, select, textarea {
 // 4. Use the user's configured `sans` font-family by default.
 // 5. Use the user's configured `sans` font-feature-settings by default.
 // 6. Use the user's configured `sans` font-variation-settings by default.
-html, :host {
+html,
+:host {
   font-feature-settings: normal;
   font-variation-settings: normal;
-  tab-size: 4; 
+  tab-size: 4;
   -o-tab-size: 4;
   -moz-tab-size: 4;
   -webkit-text-size-adjust: 100%;
@@ -60,7 +67,7 @@ body {
 // 2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
 // 3. Ensure horizontal rules are visible by default.
 hr {
-  @apply border-t h-0;
+  @apply h-0 border-t;
   color: inherit;
 }
 
@@ -76,7 +83,8 @@ a {
 }
 
 // Add the correct font weight in Edge and Safari.
-b, strong {
+b,
+strong {
   @apply font-bold;
 }
 
@@ -84,7 +92,10 @@ b, strong {
 // 2. Use the user's configured `mono` font-feature-settings by default.
 // 3. Use the user's configured `mono` font-variation-settings by default.
 // 4. Correct the odd `em` font sizing in all browsers.
-code, kbd, samp, pre {
+code,
+kbd,
+samp,
+pre {
   @apply font-mono;
   font-feature-settings: normal;
   font-variation-settings: normal;
@@ -96,8 +107,9 @@ small {
 }
 
 // Prevent `sub` and `sup` elements from affecting the line height in all browsers.
-sub, sup {
-  @apply text-['75%'] leading-[0] relative align-baseline;
+sub,
+sup {
+  @apply relative align-baseline leading-[0] text-['75%'];
 }
 
 sub {
@@ -112,27 +124,35 @@ sup {
 // 2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
 // 3. Remove gaps between table borders by default.
 table {
-  @apply indent-0 border-inherit border-collapse;
+  @apply border-collapse border-inherit indent-0;
 }
 
 // 1. Change the font styles in all browsers.
 // 2. Remove the margin in Firefox and Safari.
 // 3. Remove default padding in all browsers.
-button, input, optgroup, select, textarea {
-  @apply text-[inherit] font-[inherit] text-[100%] leading-[inherit] m-0 p-0;
+button,
+input,
+optgroup,
+select,
+textarea {
+  @apply m-0 p-0 font-[inherit] text-[100%] leading-[inherit] text-[inherit];
   font-weight: inherit;
   font-feature-settings: inherit;
   font-variation-settings: inherit;
 }
 
 // Remove the inheritance of text transform in Edge and Firefox.
-button, select {
+button,
+select {
   text-transform: none;
 }
 
 // 1. Correct the inability to style clickable types in iOS and Safari.
 // 2. Remove default button styles.
-button, [type="button"], [type="reset"], [type="submit"] {
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
   -webkit-appearance: button;
   appearance: button;
   @apply bg-transparent;
@@ -141,7 +161,7 @@ button, [type="button"], [type="reset"], [type="submit"] {
 
 // 1. Correct the odd appearance in Chrome and Safari.
 // 2. Correct the outline style in Safari.
-[type="search"] {
+[type='search'] {
   -webkit-appearance: textfield;
   appearance: textfield;
   @apply -outline-offset-2;
@@ -186,7 +206,9 @@ summary {
 }
 
 // Reset the default display for lists.
-ol, ul, menu {
+ol,
+ul,
+menu {
   @apply list-none;
 }
 
@@ -205,7 +227,8 @@ textarea::placeholder {
 }
 
 // Set the default cursor for buttons.
-button, [role="button"] {
+button,
+[role='button'] {
   @apply cursor-pointer;
 }
 
@@ -218,17 +241,25 @@ button, [role="button"] {
 // 2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
 //    This can trigger a poorly considered lint error in some tools but is included by design.
 
-img, svg, video, canvas, audio, iframe, embed, object {
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
   display: block;
   vertical-align: middle;
 }
 
 // Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
-img, video {
+img,
+video {
   @apply h-auto max-w-full;
 }
 
-// Make elements with the HTML hidden attribute stay hidden by default 
+// Make elements with the HTML hidden attribute stay hidden by default
 [hidden] {
   display: none;
 }

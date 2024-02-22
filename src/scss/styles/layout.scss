@@ -1,10 +1,9 @@
-
 html {
   @apply overflow-x-hidden overscroll-none [scrollbar-gutter:stable];
 }
 
 body {
-  @apply relative flex flex-col min-h-screen justify-between;
+  @apply relative flex min-h-screen flex-col justify-between;
 }
 
 main {

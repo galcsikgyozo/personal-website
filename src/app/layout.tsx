@@ -1,24 +1,24 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
 
-const inter = Inter({ 
+const inter = Inter({
   weight: ['400', '700'],
   style: 'normal',
   subsets: ['latin'],
   display: 'swap',
-});
+})
 
-import '@/scss/globals.scss';
+import '@/scss/globals.scss'
 
 export const metadata: Metadata = {
-  title: "Gyozo Galcsik",
-  description: "",
-};
+  title: 'Gyozo Galcsik',
+  description: '',
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en">
@@ -26,5 +26,5 @@ export default function RootLayout({
         {children}
       </body>
     </html>
-  );
+  )
 }
