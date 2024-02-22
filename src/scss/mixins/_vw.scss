@@ -1,0 +1,107 @@
+// Mixin to convert a pixel value to a value in vw units
+@mixin vw($screenSize: null, $css_property, $value1, $value2: null, $value3: null, $value4: null, $value5: null, $value6: null, $value7: null, $value8: null, $value9: null, $value10: null) {
+  $bp-value: if($screenSize, map-get($screenSizes, $screenSize), 1);
+
+  // Fallback value
+  $vw_value: auto;
+
+  // if value1 is number
+  @if type-of($value1) == number {
+    $vw_value: calc(($value1 / $bp-value) * 100vw);
+  } @else {
+    $vw_value: #{$value1};
+  }
+  // if value2 is not null
+  @if $value2 != null {
+    // if value2 is number
+    @if type-of($value2) == number {
+      $vw_value: $vw_value calc(($value2 / $bp-value) * 100vw);
+    } @else {
+      $vw_value: $vw_value #{$value2};
+    }
+  }
+  // if value3 is not null
+  @if $value3 != null {
+    // if value3 is number
+    @if type-of($value3) == number {
+      $vw_value: $vw_value calc(($value3 / $bp-value) * 100vw);
+    } @else {
+      $vw_value: $vw_value #{$value3};
+    }
+  }
+  // if value4 is not null
+  @if $value4 != null {
+    // if value4 is number
+    @if type-of($value4) == number {
+      $vw_value: $vw_value calc(($value4 / $bp-value) * 100vw);
+    } @else {
+      $vw_value: $vw_value #{$value4};
+    }
+  }
+  // if value5 is not null
+  @if $value5 != null {
+    // if value5 is number
+    @if type-of($value5) == number {
+      $vw_value: $vw_value calc(($value5 / $bp-value) * 100vw);
+    } @else {
+      $vw_value: $vw_value #{$value5};
+    }
+  }
+  // if value6 is not null
+  @if $value6 != null {
+    // if value6 is number
+    @if type-of($value6) == number {
+      $vw_value: $vw_value calc(($value6 / $bp-value) * 100vw);
+    } @else {
+      $vw_value: $vw_value #{$value6};
+    }
+  }
+  // if value7 is not null
+  @if $value7 != null {
+    // if value7 is number
+    @if type-of($value7) == number {
+      $vw_value: $vw_value calc(($value7 / $bp-value) * 100vw);
+    } @else {
+      $vw_value: $vw_value #{$value7};
+    }
+  }
+  // if value8 is not null
+  @if $value8 != null {
+    // if value8 is number
+    @if type-of($value8) == number {
+      $vw_value: $vw_value calc(($value8 / $bp-value) * 100vw);
+    } @else {
+      $vw_value: $vw_value #{$value8};
+    }
+  }
+  // if value9 is not null
+  @if $value9 != null {
+    // if value9 is number
+    @if type-of($value9) == number {
+      $vw_value: $vw_value calc(($value9 / $bp-value) * 100vw);
+    } @else {
+      $vw_value: $vw_value #{$value9};
+    }
+  }
+  // if value10 is not null
+  @if $value10 != null {
+    // if value10 is number
+    @if type-of($value10) == number {
+      $vw_value: $vw_value calc(($value10 / $bp-value) * 100vw);
+    } @else {
+      $vw_value: $vw_value #{$value10};
+    }
+  }
+
+  #{$css_property}: #{$vw_value};
+}
+
+// Mixin for container with responsive padding
+@mixin vw-container($screenSize: null, $padding) {
+  $bp-value: if($screenSize, map-get($screenSizes, $screenSize), 1);
+  width: 100vw;
+  padding-left: calc(($padding / $bp-value) * 100vw);
+  padding-right: calc(($padding / $bp-value) * 100vw);
+  --container-padding: calc((#{$padding} / #{$bp-value}) * 100vw);
+  --container-width: calc(100vw - (2 * var(--container-padding)));
+}

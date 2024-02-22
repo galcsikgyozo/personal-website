@@ -1,0 +1,11 @@
+// Mixin to generate a media query based on a breakpoint value
+@mixin mqmin($breakpoint) {
+  @media (min-width: #{map-get($breakpoints, $breakpoint)}px) {
+    @content;
+  }
+}
+@mixin mqmax($breakpoint) {
+  @media (max-width: #{map-get($breakpoints, $breakpoint) - 1}px) {
+    @content;
+  }
+}

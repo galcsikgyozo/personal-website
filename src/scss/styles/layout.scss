@@ -1,0 +1,16 @@
+
+html {
+  @apply overflow-x-hidden overscroll-none [scrollbar-gutter:stable];
+}
+
+body {
+  @apply relative flex flex-col min-h-screen justify-between;
+}
+
+main {
+  @apply grow;
+}
+
+section {
+  @apply block w-full overflow-x-clip;
+}
