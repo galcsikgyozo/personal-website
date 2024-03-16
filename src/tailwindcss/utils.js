@@ -64,9 +64,9 @@ exports.extendGrid24 = {
 // found on https://easings.net/
 exports.extendEasings = {
   transitionTimingFunction: {
-    'in-shine': 'cubic-bezier(0.12, 0, 0.39, 0)',
-    'out-shine': 'cubic-bezier(0.61, 1, 0.88, 1)',
-    'in-out-shine': 'cubic-bezier(0.37, 0, 0.63, 1)',
+    'in-sine': 'cubic-bezier(0.12, 0, 0.39, 0)',
+    'out-sine': 'cubic-bezier(0.61, 1, 0.88, 1)',
+    'in-out-sine': 'cubic-bezier(0.37, 0, 0.63, 1)',
     'in-quad': 'cubic-bezier(0.11, 0, 0.5, 0)',
     'out-quad': 'cubic-bezier(0.5, 1, 0.89, 1)',
     'in-out-quad': 'cubic-bezier(0.45, 0, 0.55, 1)',
@@ -203,4 +203,17 @@ exports.pluginAnimateDelay = plugin(function ({ matchUtilities, theme }) {
       }),
     }
   )
+})
+
+// Adding a plugin to create is-* modifiers for the :is() pseudo-class
+exports.pluginIs = plugin(function ({ matchVariant }) {
+  matchVariant('is', (value) => {
+    return `&:is(${value})`
+  })
+  matchVariant('group-is', (value) => {
+    return `:merge(.group):is(${value}) &`
+  })
+  matchVariant('peer-is', (value) => {
+    return `:merge(.peer):is(${value}) ~ &`
+  })
 })

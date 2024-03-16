@@ -6,6 +6,7 @@ import { pluginVw, themeResetPixels } from './src/tailwindcss/vw'
 import {
   extendGrid24,
   extendEasings,
+  pluginIs,
   pluginNth,
   pluginAnimateDelay,
   pluginOverrideDisabled,
@@ -40,6 +41,12 @@ const config: Config = {
       ...extendEasings,
     },
   },
-  plugins: [pluginNth, pluginAnimateDelay, pluginOverrideDisabled, pluginVw],
+  plugins: [
+    pluginIs,
+    pluginNth,
+    pluginAnimateDelay,
+    pluginOverrideDisabled,
+    pluginVw,
+  ],
 }
 export default config
