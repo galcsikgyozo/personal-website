@@ -7,32 +7,50 @@ exports.pluginVw = plugin(function ({
   matchVariant,
   theme,
 }) {
-  let vwScreens = Object.values(theme('vwScreens'))
-  if (vwScreens.length === 0) {
-    vwScreens = Object.values(theme('screens'))
-  }
+  /**
+   * Setting up variables for the vw plugin
+   */
 
-  const prefix = theme('prefix') ?? '--tw-'
+  // Getting the screens from the theme
+  const screens = theme('screens')
+  const screenValues = Object.values(screens)
+
+  // Getting the vwScreens from the theme (fallback to "screens" if not provided)
+  const vwScreens = theme('vwScreens') ?? screens
+  const vwScreenValues = Object.values(vwScreens) ?? screenValues
+
+  // Defining the prefix for the CSS variables
+  const prefix = '--tw-'
+
+  /**
+   * Adding the base CSS variables to the :root for the screen sizes
+   * - `screen-relative` is the value of the our viewport's full width - The reason why it's a variable is to be able to overwrite with CSS. For example setting it to a maximum fixed value with @media queries when the viewport reaches a certain width.
+   * - `screen-current` is the value of our current relating screen size, generated from the "screens" and "vwScreens" values defined in the Tailwind config.
+   */
 
   addBase({
     ':root': {
-      [`${prefix}w-screen`]: '100vw',
-      [`${prefix}w-current`]:
-        String(vwScreens[0]).replace('px', '') ??
+      [`${prefix}screen-relative`]: '100vw',
+      [`${prefix}screen-current`]:
+        String(vwScreenValues[0]).replace('px', '') ??
         String(theme('screens')[0]).replace('px', ''),
       // each screen size @media min-width
       ...Object.fromEntries(
         Object.entries(theme('screens')).map(([key, value]) => [
           `@media (min-width: ${value})`,
           {
-            [`${prefix}w-current`]:
-              String(theme('vwScreens')[key]).replace('px', '') ??
+            [`${prefix}screen-current`]:
+              String(vwScreens[key]).replace('px', '') ??
               String(value).replace('px', ''),
           },
         ])
       ),
     },
   })
+
+  /**
+   * Registering the `@@` static variant to convert "px" values to relative values defined by the `screen-relative` and `screen-current` CSS variables
+   */
 
   addVariant('@@', ({ container }) => {
     let styles = []
@@ -61,7 +79,7 @@ exports.pluginVw = plugin(function ({
           rule.prepend(
             postcss.decl({
               prop: style.prop,
-              value: `calc((${style.value} / var(${prefix}w-current)) * var(${prefix}w-screen))`,
+              value: `calc((${style.value} / var(${prefix}screen-current)) * var(${prefix}screen-relative))`,
             })
           )
         })
@@ -69,20 +87,36 @@ exports.pluginVw = plugin(function ({
     })
   })
 
+  /**
+   * Registering the `@` dynamic variant that accepts a breakpoint name (or arbitrary values) to convert "px" values to relative values defined by the modifier and it's corresponding "vwScreens" value
+   * - for example: `@:text-[16px]` will result in `font-size: calc((16 / DEFAULT_SCREEN_SIZE) * FULL_VIEWPORT_WIDTH);`
+   *                `@lg:text-[16px]` will result in `@media (min-width: LG_SCREEN_SIZE) { font-size: calc((16 / LG_SCREEN_SIZE) * FULL_VIEWPORT_WIDTH); }`
+   */
+
   matchVariant(
     '@',
     (value = '', { modifier, container }) => {
       let breakpointName = Object.keys(theme('screens')).find(
         (key) => theme('screens')[key] === value
       )
-      let screenSize = theme('vwScreens')[breakpointName] ?? value
+      let screenSize = vwScreens[breakpointName] ?? value
+      if (breakpointName == 'DEFAULT') {
+        breakpointName = 'default'
+      }
+
+      if (modifier !== undefined && modifier !== null && modifier.length > 0) {
+        screenSize = modifier
+          .replace('px', '')
+          .replace('[', '')
+          .replace(']', '')
+      }
 
       let styles = []
 
       container.walkRules((rule) => {
         rule.walkDecls((decl) => {
           // remove ${prefix}w-relative
-          if (decl.prop === `${prefix}w-relative`) {
+          if (decl.prop === `${prefix}screen-${breakpointName}`) {
             decl.remove()
           }
         })
@@ -110,21 +144,30 @@ exports.pluginVw = plugin(function ({
             rule.prepend(
               postcss.decl({
                 prop: style.prop,
-                value: `calc((${style.value} / var(${prefix}w-relative)) * var(${prefix}w-screen))`,
+                value: `calc((${style.value} / var(${prefix}screen-size-${
+                  breakpointName ??
+                  'arbitrary-' + String(screenSize).replace('px', '')
+                })) * var(${prefix}screen-relative))`,
               })
             )
           })
 
           rule.append(
             postcss.decl({
-              prop: `${prefix}w-relative`,
+              prop: `${prefix}screen-size-${
+                breakpointName ??
+                'arbitrary-' + String(screenSize).replace('px', '')
+              }`,
               value: String(screenSize).replace('px', ''),
             })
           )
         }
       })
 
-      if (breakpointName !== undefined && breakpointName !== null) {
+      // Only add a `@media (min-width: SCREEN_SIZE)` query
+      // - if the breakpoint name is not "default" and there is no arbitrary modifier
+      if (breakpointName !== 'default' && modifier !== undefined) {
+        // - if the screen size is larger than 0
         if (
           value !== 0 &&
           value !== '0' &&
@@ -138,6 +181,7 @@ exports.pluginVw = plugin(function ({
           return parsed !== null ? `@media (min-width: ${value})` : []
         }
       }
+      // otherwise don't return anything, so the `@media` query is not added
     },
     {
       values: theme('screens'),
@@ -147,9 +191,11 @@ exports.pluginVw = plugin(function ({
 
 /**
  * Utility to convert default TailwindCSS theme values to pixels
- * it is necessary to be able to convert px values to vw when using
- * default TailwindCSS classes with the `twPlugin` provided modifiers
+ * - Description:   Its usage is necessary to be able to convert base TailwindCSS values defined in "em" or "rem" to "px" values so that they can be used with the `@@` and `@` variants
+ * - Usage:         1. First you need to `@import { themeResetPixels } from "tailwind-vw"` in your `tailwind.config.js` file
+ *                  2. Then add the `...themeResetPixels` with the spread syntax to be the first item the `theme` object
  */
+
 exports.themeResetPixels = {
   fontSize: {
     xs: '12px',
@@ -219,5 +265,21 @@ exports.themeResetPixels = {
     '2xl': '16px',
     '3xl': '24px',
     full: '9999px',
+  },
+  lineHeight: {
+    3: '12px',
+    4: '16px',
+    5: '20px',
+    6: '24px',
+    7: '28px',
+    8: '32px',
+    9: '36px',
+    10: '40px',
+    none: '1',
+    tight: '1.25',
+    snug: '1.375',
+    normal: '1.5',
+    relaxed: '1.625',
+    loose: '2',
   },
 }
