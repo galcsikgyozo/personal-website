@@ -33,8 +33,8 @@ const scssAdditionalData =
     .join(', ') +
   `);
 
-  @import 'src/scss/mixins/_mq';
-  @import 'src/scss/mixins/_vw';
+  @import 'src/app/scss/mixins/_mq';
+  @import 'src/app/scss/mixins/_vw';
 `
 
 const nextConfig = {

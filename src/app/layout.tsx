@@ -6,9 +6,10 @@ const inter = Inter({
   style: 'normal',
   subsets: ['latin'],
   display: 'swap',
+  variable: '--font-inter',
 })
 
-import '@/scss/globals.scss'
+import '@/app/scss/globals.scss'
 
 export const metadata: Metadata = {
   title: 'Gyozo Galcsik',
@@ -22,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-background text-body`}>
+      <body className={`${inter.className} base bg-background text-body`}>
         {children}
       </body>
     </html>

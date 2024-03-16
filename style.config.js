@@ -16,10 +16,10 @@ module.exports = {
 
   // Colors
   themeColors: {
-    body: '#A1A3A8',
     background: '#17191D',
-    iconBackground: '#22252A',
+    backgroundAlt: '#22252A',
     primary: '#F1F3F9',
+    body: '#A1A3A8',
   },
 
   // Typography
@@ -43,6 +43,6 @@ module.exports = {
       '"Courier New"',
       'monospace',
     ],
-    inter: ['Inter', 'sans-serif'],
+    inter: ['var(--font-inter)'],
   },
 }

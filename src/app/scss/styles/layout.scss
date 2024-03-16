@@ -1,0 +1,92 @@
+// Root Variables
+:root {
+  @apply @sm:[--section-py:64px] @md:[--section-py:96px] @lg:[--section-py:128px];
+  @apply @sm:[--container-w:344px] @md:[--container-w:944px] @lg:[--container-w:1136px];
+  @apply @sm:[--container-px:23px] @md:[--container-px:40px] @lg:[--container-px:152px];
+}
+
+html {
+  @apply overflow-x-hidden overscroll-none [scrollbar-gutter:stable];
+  // @apply @sm:scroll-pt-20 @md:scroll-pt-24 @lg:scroll-pt-28;
+}
+
+body {
+  @apply relative flex min-h-screen flex-col justify-between;
+}
+
+main {
+  @apply grow;
+}
+
+/**
+ * Sections
+ */
+
+section {
+  @apply block w-full overflow-x-clip;
+  @apply py-[--section-py];
+}
+
+// .py-section {
+//   @apply py-[--section-py];
+// }
+
+/*
+ * Container
+ */
+
+// .w-container {
+//   @apply w-[--container-w];
+// }
+
+// .max-w-container {
+//   @apply max-w-[--container-w];
+// }
+
+.px-container {
+  @apply px-[--container-px];
+}
+
+// .pl-container {
+//   @apply pl-[--container-px];
+// }
+
+// .pr-container {
+//   @apply pr-[--container-px];
+// }
+
+// .ml-container {
+//   @apply ml-[--container-px];
+// }
+
+// .mr-container {
+//   @apply mr-[--container-px];
+// }
+
+// .-mx-container {
+//   @apply -mx-[--container-px];
+// }
+
+// .-ml-container {
+//   @apply -ml-[--container-px];
+// }
+
+// .-mr-container {
+//   @apply -mr-[--container-px];
+// }
+
+/*
+ * Grid
+ */
+
+.grid-base {
+  @apply grid grid-cols-12 @@:gap-x-4 md:grid-cols-24;
+}
+
+// .grid-cols-base {
+//   @apply grid-cols-12 md:grid-cols-24;
+// }
+
+// .gap-x-base {
+//   @apply @@:gap-x-4;
+// }
