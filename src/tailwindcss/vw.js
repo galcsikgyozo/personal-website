@@ -66,6 +66,7 @@ exports.pluginVw = plugin(function ({
         ) {
           styles.push({
             value: decl.value.split('px')[0],
+            important: decl.important,
             prop: decl.prop,
           })
 
@@ -79,7 +80,9 @@ exports.pluginVw = plugin(function ({
           rule.prepend(
             postcss.decl({
               prop: style.prop,
-              value: `calc((${style.value} / var(${prefix}screen-current)) * var(${prefix}screen-relative))`,
+              value: `calc((${style.value} / var(${prefix}screen-current)) * var(${prefix}screen-relative))${
+                style.important ? ' !important' : ''
+              }`,
             })
           )
         })
@@ -131,6 +134,7 @@ exports.pluginVw = plugin(function ({
           ) {
             styles.push({
               value: decl.value.split('px')[0],
+              important: decl.important,
               prop: decl.prop,
             })
 
@@ -147,7 +151,9 @@ exports.pluginVw = plugin(function ({
                 value: `calc((${style.value} / var(${prefix}screen-size-${
                   breakpointName ??
                   'arbitrary-' + String(screenSize).replace('px', '')
-                })) * var(${prefix}screen-relative))`,
+                })) * var(${prefix}screen-relative))${
+                  style.important ? ' !important' : ''
+                }`,
               })
             )
           })
