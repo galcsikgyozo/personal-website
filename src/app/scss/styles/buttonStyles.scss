@@ -1,0 +1,11 @@
+.button {
+  @apply inline-flex items-center justify-center border border-current text-center font-medium leading-none transition-colors duration-300 ease-in-out-cubic @@:gap-3 @@:rounded-xl @@:px-9 @@:py-4 @@:text-[18px] @@:tracking-[-0.32px];
+
+  &-primary {
+    @apply border-primary bg-primary text-background hover:bg-backgroundAlt hover:text-primary;
+  }
+
+  &-secondary {
+    @apply border-primary bg-background text-primary hover:bg-backgroundAlt;
+  }
+}

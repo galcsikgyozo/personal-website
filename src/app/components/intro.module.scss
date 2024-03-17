@@ -1,0 +1,25 @@
+@keyframes scaleAndFadeOut {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.35;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(10);
+    opacity: 0;
+  }
+}
+
+.mapPoint {
+  &::before {
+    @apply absolute left-1/2 top-1/2 h-full w-full origin-center transform rounded-full bg-primary content-[""];
+
+    // The reason why the "transform" class wouldn't work here is because I enabled the experimental.optimizeDefaults option in the Tailwind Config
+    // This option leaves out the default --tw-* variables from the :root() element whilst making a better performance on the CPU of older machines,
+    // but the "transform" class is missing out on the rotate, scale and skew variables this way, so it to work properly.
+    // Secondly, unfortunately we can't animate keyframes using native CSS variables.
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+      scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+
+    animation: scaleAndFadeOut 2s linear infinite;
+  }
+}
