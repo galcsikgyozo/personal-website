@@ -1,0 +1,47 @@
+.wrapper {
+  @apply relative m-auto;
+  @apply bg-background bg-clip-padding;
+  @apply border-solid border-transparent @@:border-[1px];
+
+  &:before {
+    @apply absolute bottom-0 left-0 right-0 top-0 z-[-1] content-[""];
+    @apply @@:m-[-1px];
+    @apply rounded-[inherit];
+
+    // "Border" Properties
+    @apply bg-scroll bg-no-repeat;
+    background-size: 100% 200%;
+    background-image: linear-gradient(
+      to bottom,
+      rgb(241 243 249 / 0.5) 0%,
+      rgb(241 243 249 / 0.5) 55%,
+      rgb(161 163 168 / 0.08) 100%
+    );
+
+    // Opacity Properties
+    @apply opacity-50;
+
+    // Transition Properties
+    @apply duration-300 ease-out-cubic;
+    transition-property: background-position-y, opacity;
+    background-position-y: 100%;
+  }
+
+  // If the logo link is defined, add the hover effect
+  &:not(a[href*='#']) {
+    &:hover {
+      &:before {
+        // "Border" Properties
+        background-position-y: 0%;
+
+        // Opacity Properties
+        @apply opacity-100;
+      }
+    }
+  }
+
+  // If the logo link is not defined, remove the hover effect, and set the cursor to default
+  &:is(a[href*='#']) {
+    @apply cursor-default;
+  }
+}

@@ -87,6 +87,6 @@ section {
 //   @apply grid-cols-12 md:grid-cols-24;
 // }
 
-// .gap-x-base {
-//   @apply @@:gap-x-4;
-// }
+.gap-x-base {
+  @apply @@:gap-x-4;
+}
