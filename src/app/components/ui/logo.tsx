@@ -26,7 +26,7 @@ const Logo: React.FC<LogoProps> = ({ href, src, alt, className }) => {
       )}
     >
       <Image
-        className="overflow-visible object-contain object-center @sm:h-[60px] @sm:w-[110px] @md:h-[60px] @md:w-[120px] @lg:h-[70px] @lg:w-[140px]"
+        className="object-contain object-center @sm:h-[60px] @sm:w-[110px] @md:h-[60px] @md:w-[120px] @lg:h-[70px] @lg:w-[140px]"
         src={src}
         alt={alt}
         width={0}

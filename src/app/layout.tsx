@@ -13,7 +13,8 @@ import '@/app/scss/globals.scss'
 
 export const metadata: Metadata = {
   title: 'Gyozo Galcsik',
-  description: '',
+  description:
+    'Professional Digital Native based in Brussels & Budapest. Web Developer, UI/UX Designer, Project Manager, Content Creator.',
 }
 
 export default function RootLayout({
