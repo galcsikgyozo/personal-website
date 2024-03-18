@@ -7,6 +7,7 @@ const HeaderLogo: React.FC = () => {
         event.preventDefault()
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }}
+      aria-label="Scroll to top"
     >
       <svg
         className="aspect-[448/512] text-primary @sm:h-12 @md:h-14 @lg:h-16"

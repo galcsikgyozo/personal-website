@@ -11,6 +11,7 @@ const GetInTouchButton: React.FC = () => {
           behavior: 'smooth',
         })
       }}
+      aria-label="Get in touch"
     >
       Get in touch
     </button>
