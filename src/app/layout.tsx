@@ -12,7 +12,7 @@ const inter = Inter({
 import '@/app/scss/globals.scss'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://galcsikgyozo.hu'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || ''),
   alternates: {
     canonical: '/',
   },
@@ -29,6 +29,8 @@ export const metadata: Metadata = {
   },
 }
 
+import SmoothScrollProvider from '@/app/utils/smooth-scrolling'
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -42,7 +44,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#17191d" />
       </head>
       <body className={`${inter.className} base bg-background text-body`}>
-        {children}
+        <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>
     </html>
   )
