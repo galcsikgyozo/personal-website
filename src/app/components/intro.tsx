@@ -46,7 +46,7 @@ const Intro: React.FC = () => {
         </div>
       </div>
       <Image
-        src="/static/images/map-europe.svg"
+        src="/images/map-europe.svg"
         alt="Map of Europe"
         width={0}
         height={0}

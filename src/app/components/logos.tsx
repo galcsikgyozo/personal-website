@@ -15,94 +15,94 @@ const Intro: React.FC = () => {
       >
         <Logo
           href="https://atelierdesign.be"
-          src="/static/images/logo-atelierdesign.svg"
+          src="/images/logo-atelierdesign.svg"
           alt="Logo of Atelier Design Bruxelles"
         />
         <Logo
           href="https://postforrent.com"
-          src="/static/images/logo-postforrent.svg"
+          src="/images/logo-postforrent.svg"
           alt="Logo of Post For Rent International"
         />
         <Logo
           href="https://m15project.com"
-          src="/static/images/logo-m15.svg"
+          src="/images/logo-m15.svg"
           alt="Logo of M15 (MIP Productions Kft.)"
         />
         <Logo
           href="https://progressive.hu"
-          src="/static/images/logo-progressive.svg"
+          src="/images/logo-progressive.svg"
           alt="Logo of Progressive Advertising Agency (Progressive BEX Kft.)"
         />
         <Logo
           href="https://wlwyb.com"
-          src="/static/images/logo-wlwyb.svg"
+          src="/images/logo-wlwyb.svg"
           alt="Logo of WLWYB - We Love What You Build"
         />
         <Logo
           href="https://mckinsey.com"
-          src="/static/images/logo-mckinsey.svg"
+          src="/images/logo-mckinsey.svg"
           alt="Logo of McKinsey & Company"
         />
         <Logo
           href="https://jamesonwhiskey.com"
-          src="/static/images/logo-jameson.svg"
+          src="/images/logo-jameson.svg"
           alt="Logo of Jameson Irish Whiskey"
         />
         <Logo
           href="https://wearesander.com"
-          src="/static/images/logo-sander.svg"
+          src="/images/logo-sander.svg"
           alt="Logo of SANDER Recruitment Agency"
         />
         <Logo
           href="https://mypos.com"
-          src="/static/images/logo-mypos.svg"
+          src="/images/logo-mypos.svg"
           alt="Logo of MyPOS Payment Solutions"
         />
         <Logo
           href="https://budapest.hu"
-          src="/static/images/logo-budapest.svg"
+          src="/images/logo-budapest.svg"
           alt="Logo of Municipality of the Capital of Budapest"
         />
         <Logo
           href="https://coca-cola.com"
-          src="/static/images/logo-cocacola.svg"
+          src="/images/logo-cocacola.svg"
           alt="Logo of The Coca-Cola Company"
         />
         <Logo
           href="https://ballantines.com"
-          src="/static/images/logo-ballantines.svg"
+          src="/images/logo-ballantines.svg"
           alt="Logo of Ballantine's Scotch Whisky"
         />
         <Logo
           href="https://fipra.com"
-          src="/static/images/logo-fipra.svg"
+          src="/images/logo-fipra.svg"
           alt="Logo of FIPRA International Public Affairs Agency"
         />
         <Logo
           href="https://dlink.com"
-          src="/static/images/logo-dlink.svg"
+          src="/images/logo-dlink.svg"
           alt="Logo of D-Link Corporation"
         />
         <Logo
           href="https://curaprox.com"
-          src="/static/images/logo-curaprox.svg"
+          src="/images/logo-curaprox.svg"
           alt="Logo of Curaprox AG"
         />
         <Logo
           href="https://mcdonalds.com"
-          src="/static/images/logo-mcdonalds.svg"
+          src="/images/logo-mcdonalds.svg"
           alt="Logo of McDonald's Corporation"
           className="md:col-start-2 @@:md:!-mb-12 @@:md:!mt-12"
         />
         <Logo
           href="https://unicef.hu"
-          src="/static/images/logo-unicef.svg"
+          src="/images/logo-unicef.svg"
           alt="Logo of UNICEF Hungary"
           className="@@:md:!-mb-0 @@:md:!mt-0"
         />
         <Logo
           href="https://generali.com"
-          src="/static/images/logo-generali.svg"
+          src="/images/logo-generali.svg"
           alt="Logo of Generali Insurance Company"
           className="@@:md:!-mb-12 @@:md:!mt-12"
         />
