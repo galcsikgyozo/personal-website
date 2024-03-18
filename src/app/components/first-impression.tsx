@@ -3,6 +3,8 @@ import Image from 'next/image'
 
 import WordLoop from '@/app/components/ui/word-loop'
 
+import portraitImage from '~/static/images/gyozo-galcsik-portrait.webp'
+
 const FirstImpression: React.FC = () => {
   return (
     <section className="first-impression px-container grid-base relative h-svh @sm:pb-12 @sm:pt-36 @md:py-24 @lg:py-32 md:max-h-[75vw] md:min-h-[50vw]">
@@ -59,7 +61,7 @@ const FirstImpression: React.FC = () => {
         </svg>
       </div>
       <Image
-        src="/static/images/gyozo-galcsik-portrait.jpg"
+        src={portraitImage}
         alt="Portrait of Gyozo Galcsik"
         width={0}
         height={0}
