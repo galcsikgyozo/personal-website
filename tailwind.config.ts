@@ -31,6 +31,17 @@ const config: Config = {
     ),
     vwScreens: styleConfig.screenSizes,
 
+    // Purposefully leaving out the default transition class
+    transitionProperty: {
+      none: 'none',
+      all: 'all',
+      colors:
+        'color, background-color, border-color, text-decoration-color, fill, stroke',
+      opacity: 'opacity',
+      shadow: 'box-shadow',
+      transform: 'transform',
+    },
+
     extend: {
       lineHeight: {
         DEFAULT: '1',
