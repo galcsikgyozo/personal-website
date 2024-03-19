@@ -1,44 +1,36 @@
 'use client'
 
-import React, { useRef, useEffect, useState } from 'react'
-import { motion, Point } from 'framer-motion'
+import React, { useRef, useEffect } from 'react'
 
 const CursorFollower: React.FC = () => {
   const cursorFollowerRef = useRef<HTMLDivElement>(null)
 
-  const [cursorPosition, setCursorPosition] = useState<Point>({ x: 0, y: 0 })
+  const handleMouseMove = (event: any) => {
+    cursorFollowerRef.current?.animate(
+      {
+        transform: `translate(${event.clientX}px, ${event.clientY}px)`,
+      },
+      {
+        duration: 5000,
+        fill: 'forwards',
+      }
+    )
+  }
 
   useEffect(() => {
-    const handlePointerMove = (event: PointerEvent) => {
-      if (cursorFollowerRef.current) {
-        setCursorPosition({ x: event.clientX, y: event.clientY })
-      }
-    }
-
-    document.body.addEventListener('pointermove', handlePointerMove)
+    window.addEventListener('mousemove', handleMouseMove)
 
     return () => {
-      document.body.removeEventListener('pointermove', handlePointerMove)
+      window.removeEventListener('mousemove', handleMouseMove)
     }
   }, [])
 
   return (
     <>
-      <motion.div
+      <div
+        id="cursor-follower"
         ref={cursorFollowerRef}
-        className={`pointer-events-none fixed -z-20 origin-center -translate-x-1/2 -translate-y-1/2 -rotate-45 scale-y-150 transform rounded-full bg-body @@:size-[538px]`}
-        initial={{
-          left: 0,
-          top: 0,
-        }}
-        animate={{
-          left: cursorPosition.x,
-          top: cursorPosition.y,
-        }}
-        transition={{
-          ease: 'easeOut',
-          duration: 1,
-        }}
+        className={`pointer-events-none fixed -z-20 origin-center -rotate-45 scale-y-150 rounded-full bg-body [translate:-50%_-50%] @@:size-[538px]`}
       />
       <div className="pointer-events-none fixed left-0 top-0 -z-10 h-screen w-screen bg-background/75 backdrop-blur-[200px]" />
     </>
