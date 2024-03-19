@@ -1,6 +1,6 @@
 .wrapper {
   @apply relative m-auto;
-  @apply bg-background bg-clip-padding;
+  @apply bg-background bg-clip-padding transition-colors duration-300 ease-out-cubic hover:bg-background/95;
   @apply border-solid border-transparent @@:border-[1px];
 
   &:before {
@@ -13,8 +13,8 @@
     background-size: 100% 200%;
     background-image: linear-gradient(
       to bottom,
-      rgb(241 243 249 / 0.5) 0%,
-      rgb(241 243 249 / 0.5) 55%,
+      rgb(241 243 249 / 0.35) 0%,
+      rgb(241 243 249 / 0.35) 55%,
       rgb(161 163 168 / 0.08) 100%
     );
 
