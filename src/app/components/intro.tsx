@@ -52,7 +52,7 @@ const Intro: React.FC = () => {
         height={0}
         fill={false}
         unoptimized
-        className="absolute z-0 aspect-[1000/846] max-w-none @sm:bottom-[-82px] @sm:right-[-338px] @sm:w-[1000px] @md:bottom-[40px] @md:right-[-236px] @md:w-[758px] @lg:bottom-[-14px] @lg:right-[-367px] @lg:w-[1000px]"
+        className="absolute z-0 aspect-[1000/846] max-w-none @sm:bottom-[-82px] @sm:right-[-338px] @sm:w-[1000px] @md:bottom-10 @md:right-[-236px] @md:w-[758px] @lg:bottom-[-14px] @lg:right-[-367px] @lg:w-[1000px]"
         loading="lazy"
       />
       <div
@@ -61,7 +61,7 @@ const Intro: React.FC = () => {
       />
       <div
         id="mapPointBudapest"
-        className={`${styles.mapPoint} absolute rounded-full bg-primary @@:size-2 @sm:bottom-[204px] @sm:right-[82px] @md:bottom-[256px] @md:right-[80px] @lg:bottom-[272px] @lg:right-[50px]`}
+        className={`${styles.mapPoint} absolute rounded-full bg-primary @@:size-2 @sm:bottom-[204px] @sm:right-[82px] @md:bottom-[256px] @md:right-20 @lg:bottom-[272px] @lg:right-[50px]`}
       />
     </section>
   )
