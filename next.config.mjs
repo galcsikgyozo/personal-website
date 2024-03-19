@@ -41,6 +41,11 @@ const nextConfig = {
   sassOptions: {
     additionalData: scssAdditionalData,
   },
+  images: {
+    // loader: 'custom',
+    // loaderFile: './src/app/utils/image-loader.ts',
+    domains: [process.env.NEXT_PUBLIC_R2_BUCKET_URL],
+  },
 }
 
 export default nextConfig

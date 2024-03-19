@@ -1,8 +1,8 @@
 import React from 'react'
-import Image from 'next/image'
+import R2Image from '@/app/components/ui/r2-image'
 
 import WordLoop from '@/app/components/ui/word-loop'
-import portraitImage from '~/images/gyozo-galcsik-portrait.webp'
+// import portraitImage from '~/images/gyozo-galcsik-portrait.webp'
 
 const FirstImpression: React.FC = () => {
   return (
@@ -59,8 +59,8 @@ const FirstImpression: React.FC = () => {
           />
         </svg>
       </div>
-      <Image
-        src={portraitImage}
+      <R2Image
+        src="/images/gyozo-galcsik-portrait.jpg"
         alt="Portrait of Gyozo Galcsik"
         width={0}
         height={0}

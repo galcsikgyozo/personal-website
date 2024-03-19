@@ -18,6 +18,7 @@ pnpm-lock.yaml
 
 # environment
 .env*
+!.env.example
 
 # production
 /build
