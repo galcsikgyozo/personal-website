@@ -1,7 +1,8 @@
 import React from 'react'
+import Image from 'next/image'
 
 import WordLoop from '@/app/components/ui/word-loop'
-import PortraitImage from '@/app/components/ui/portrait-image'
+import portraitImage from '~/images/gyozo-galcsik-portrait.webp'
 
 const FirstImpression: React.FC = () => {
   return (
@@ -58,7 +59,19 @@ const FirstImpression: React.FC = () => {
           />
         </svg>
       </div>
-      <PortraitImage />
+      <Image
+        src={portraitImage}
+        alt="Portrait of Gyozo Galcsik"
+        width={0}
+        height={0}
+        fill={false}
+        sizes="100vw"
+        loading="eager"
+        fetchPriority="high"
+        priority={true}
+        decoding="async"
+        className="absolute right-0 top-1/2 -z-[1] h-1/2 w-screen transform object-cover @md:h-[464px] @md:w-96 max-md:[--tw-translate-y:calc(-50%+var(--tw-translate-y-offset))] max-md:@sm:[--tw-translate-y-offset:96px] md:-translate-y-1/2"
+      />
     </section>
   )
 }

@@ -17,7 +17,7 @@ const PortraitImage: React.FC = () => {
   return (
     <Image
       loader={imageLoader}
-      src={`${process.env.CLOUDFLARE_R2_BUCKET_URL}/images/gyozo-galcsik-portrait.jpg`}
+      src={`${process.env.CLOUDFLARE_R2_BUCKET_URL || ''}/images/gyozo-galcsik-portrait.jpg`}
       alt="Portrait of Gyozo Galcsik"
       width={0}
       height={0}
