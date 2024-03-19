@@ -18,7 +18,7 @@ const Intro: React.FC = () => {
           Professional Digital&nbsp;Native based in
           Brussels&nbsp;&&nbsp;Budapest
         </h2>
-        <div className="intro-content base @md:pr-10 @sm:[&_*:not(:last-child)]:mb-[18px] @md:[&_*:not(:last-child)]:mb-6 @lg:[&_*:not(:last-child)]:mb-6 [&_strong]:font-normal [&_strong]:text-primary">
+        <div className="intro-content base @md:pr-10 @sm:[&_*:not(:last-child)]:mb-4 @md:[&_*:not(:last-child)]:mb-6 @lg:[&_*:not(:last-child)]:mb-6 [&_strong]:font-normal [&_strong]:text-primary">
           <Balancer ratio={1} preferNative={false}>
             <p>
               I've always been passionate about{' '}
