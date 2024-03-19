@@ -22,7 +22,7 @@
     @apply opacity-50;
 
     // Transition Properties
-    @apply duration-300 ease-out-cubic;
+    @apply duration-500 ease-in-out-cubic;
     transition-property: background-position-y, opacity;
     background-position-y: 100%;
   }

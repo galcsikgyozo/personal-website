@@ -30,6 +30,7 @@ export const metadata: Metadata = {
 }
 
 import SmoothScrollProvider from '@/app/utils/smooth-scrolling'
+import CursorFollower from './components/ui/cursor-follower'
 
 export default function RootLayout({
   children,
@@ -44,7 +45,10 @@ export default function RootLayout({
         <meta name="theme-color" content="#17191d" />
       </head>
       <body className={`${inter.className} base bg-background text-body`}>
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <SmoothScrollProvider>
+          <CursorFollower />
+          {children}
+        </SmoothScrollProvider>
       </body>
     </html>
   )

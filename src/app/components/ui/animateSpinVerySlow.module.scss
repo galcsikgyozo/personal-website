@@ -1,0 +1,13 @@
+@keyframes animateSpinVerySlow {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
+
+.style {
+  animation: animateSpinVerySlow 10s linear infinite;
+  transform-origin: center;
+}
