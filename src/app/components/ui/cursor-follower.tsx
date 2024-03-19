@@ -3,8 +3,6 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { motion, Point } from 'framer-motion'
 
-import animateSpinVerySlow from './animateSpinVerySlow.module.scss'
-
 const CursorFollower: React.FC = () => {
   const cursorFollowerRef = useRef<HTMLDivElement>(null)
 
@@ -29,7 +27,7 @@ const CursorFollower: React.FC = () => {
       <motion.div
         ref={cursorFollowerRef}
         // className="fixed size-48 rounded-full bg-white transition-transform duration-300"
-        className={`${animateSpinVerySlow.style} pointer-events-none fixed -z-20 size-96 origin-center rounded-[100%] bg-body [translate:-50%_-50%] @@:h-[804px] @@:w-[538px]`}
+        className={`pointer-events-none fixed -z-20 origin-center -translate-x-1/2 -translate-y-1/2 -rotate-45 scale-y-150 transform rounded-full bg-body @@:size-[538px]`}
         initial={{
           left: 0,
           top: 0,
