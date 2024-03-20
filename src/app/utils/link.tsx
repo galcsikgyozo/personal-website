@@ -28,12 +28,16 @@ export default function Anchor({ children, ...props }: AnchorProps) {
   }
 
   useEffect(() => {
-    anchorRef.current?.addEventListener('click', handleClick)
+    const refCurrent = anchorRef.current // Capture the current value
 
-    return () => {
-      anchorRef.current?.removeEventListener('click', handleClick)
+    const handleCleanup = () => {
+      refCurrent?.removeEventListener('click', handleClick)
     }
-  }, [])
+
+    refCurrent?.addEventListener('click', handleClick)
+
+    return handleCleanup // Use the captured value in the cleanup function
+  }, []) // Empty dependency array because this effect only runs once
 
   return (
     <Link ref={anchorRef} {...props}>

@@ -16,7 +16,8 @@ const imageLoader = ({ src, width, quality }: ImageLoaderProps) => {
 }
 
 const R2Image: React.FC<ImageProps> = (props) => {
-  return <Image {...props} loader={imageLoader} />
+  const { alt, ...restProps } = props
+  return <Image alt={alt || ''} {...restProps} loader={imageLoader} />
 }
 
 export default R2Image
