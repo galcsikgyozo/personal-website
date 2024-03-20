@@ -29,7 +29,12 @@ const config: Config = {
         `${value}px`,
       ])
     ),
-    vwScreens: styleConfig.screenSizes,
+    vwScreens: Object.fromEntries(
+      Object.entries(styleConfig.screenSizes).map(([key, value]) => [
+        key,
+        `${value}px`,
+      ])
+    ),
 
     // Purposefully leaving out the default transition class
     transitionProperty: {
