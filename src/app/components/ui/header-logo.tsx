@@ -1,14 +1,10 @@
 'use client'
 
+import Anchor from '@/app/utils/link'
+
 const HeaderLogo: React.FC = () => {
   return (
-    <button
-      onClick={(event) => {
-        event.preventDefault()
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-      }}
-      aria-label="Scroll to top"
-    >
+    <Anchor href="#document" aria-label="Scroll to top">
       <svg
         className="aspect-[448/512] text-primary @sm:h-12 @md:h-14 @lg:h-16"
         xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +18,7 @@ const HeaderLogo: React.FC = () => {
           clipRule="evenodd"
         />
       </svg>
-    </button>
+    </Anchor>
   )
 }
 

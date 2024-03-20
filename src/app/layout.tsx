@@ -38,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html id="document" lang="en">
       <head>
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#17191d" />
         <meta name="msapplication-TileColor" content="#17191d" />
