@@ -2,8 +2,8 @@ import React from 'react'
 
 import Balancer from 'react-wrap-balancer'
 
-import Link from 'next/link'
 import Image from 'next/image'
+import Anchor from '@/app/utils/link'
 
 import styles from './intro.module.scss'
 
@@ -37,12 +37,19 @@ const Intro: React.FC = () => {
           </Balancer>
         </div>
         <div className="intro-buttons-holder flex flex-col items-center justify-start @sm:gap-4 @md:gap-6 @lg:gap-8 md:flex-row">
-          <Link href="#" className="button button-primary max-md:w-full">
+          <Anchor
+            href="/files/gyozo-galcsik-cv-2024.pdf"
+            target="_blank"
+            className="button button-primary max-md:w-full"
+          >
             Download my CV
-          </Link>
-          <Link href="#" className="button button-secondary max-md:w-full">
+          </Anchor>
+          <Anchor
+            href="#contact"
+            className="button button-secondary max-md:w-full"
+          >
             Get in touch
-          </Link>
+          </Anchor>
         </div>
       </div>
       <Image

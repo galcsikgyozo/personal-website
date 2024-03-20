@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Link from 'next/link'
+import Anchor from '@/app/utils/link'
 import Image from 'next/image'
 
 import borderGradient from './borderGradient.module.scss'
@@ -16,7 +16,7 @@ interface LogoProps {
 
 const Logo: React.FC<LogoProps> = ({ href, src, alt, className }) => {
   return (
-    <Link
+    <Anchor
       href={href || '#'}
       target={href ? '_blank' : undefined}
       rel={href ? 'noopener noreferrer' : undefined}
@@ -34,7 +34,7 @@ const Logo: React.FC<LogoProps> = ({ href, src, alt, className }) => {
         fill={false}
         unoptimized
       />
-    </Link>
+    </Anchor>
   )
 }
 
