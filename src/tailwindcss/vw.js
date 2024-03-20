@@ -15,9 +15,15 @@ exports.pluginVw = plugin(function ({
   const screens = theme('screens')
   const screenValues = Object.values(screens)
 
+  // order screens by size
+  Object.keys(screens).sort((a, b) => screens[a] - screens[b])
+
   // Getting the vwScreens from the theme (fallback to "screens" if not provided)
   const vwScreens = theme('vwScreens') ?? screens
   const vwScreenValues = Object.values(vwScreens) ?? screenValues
+
+  // order vwScreens by size
+  Object.keys(vwScreens).sort((a, b) => vwScreens[a] - vwScreens[b])
 
   // Defining the prefix for the CSS variables
   const prefix = '--tw-'
@@ -33,10 +39,18 @@ exports.pluginVw = plugin(function ({
       [`${prefix}screen-relative`]: '100vw',
       [`${prefix}screen-current`]:
         String(vwScreenValues[0]).replace('px', '') ??
-        String(theme('screens')[0]).replace('px', ''),
+        String(screens[0]).replace('px', ''),
+      // each screen size in px
+      ...Object.fromEntries(
+        Object.entries(screens).map((value, index) => [
+          `${prefix}screen-width-${Object.keys(screens)[index]}`,
+          Object.values(vwScreens)[index].replace('px', '') ??
+            String(value).replace('px', ''),
+        ])
+      ),
       // each screen size @media min-width
       ...Object.fromEntries(
-        Object.entries(theme('screens')).map(([key, value]) => [
+        Object.entries(screens).map(([key, value]) => [
           `@media (min-width: ${value})`,
           {
             [`${prefix}screen-current`]:
@@ -99,8 +113,8 @@ exports.pluginVw = plugin(function ({
   matchVariant(
     '@',
     (value = '', { modifier, container }) => {
-      let breakpointName = Object.keys(theme('screens')).find(
-        (key) => theme('screens')[key] === value
+      let breakpointName = Object.keys(screens).find(
+        (key) => screens[key] === value
       )
       let screenSize = vwScreens[breakpointName] ?? value
       if (breakpointName == 'DEFAULT') {
@@ -148,7 +162,7 @@ exports.pluginVw = plugin(function ({
             rule.prepend(
               postcss.decl({
                 prop: style.prop,
-                value: `calc((${style.value} / var(${prefix}screen-size-${
+                value: `calc((${style.value} / var(${prefix}screen-width-${
                   breakpointName ??
                   'arbitrary-' + String(screenSize).replace('px', '')
                 })) * var(${prefix}screen-relative))${
@@ -158,15 +172,17 @@ exports.pluginVw = plugin(function ({
             )
           })
 
-          rule.append(
-            postcss.decl({
-              prop: `${prefix}screen-size-${
-                breakpointName ??
-                'arbitrary-' + String(screenSize).replace('px', '')
-              }`,
-              value: String(screenSize).replace('px', ''),
-            })
-          )
+          if (!breakpointName) {
+            rule.append(
+              postcss.decl({
+                prop: `${prefix}screen-width-${
+                  breakpointName ??
+                  'arbitrary-' + String(screenSize).replace('px', '')
+                }`,
+                value: String(screenSize).replace('px', ''),
+              })
+            )
+          }
         }
       })
 
