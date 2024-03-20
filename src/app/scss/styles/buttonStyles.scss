@@ -1,11 +1,13 @@
-.button {
-  @apply inline-flex items-center justify-center border border-current text-center font-medium leading-none transition-colors duration-300 ease-in-out-cubic @@:gap-3 @@:rounded-xl @@:px-8 @@:py-4 @@:text-[18px] @@:tracking-[-0.32px];
+@layer components {
+  .button {
+    @apply inline-flex items-center justify-center border border-current text-center font-medium leading-none transition-colors duration-300 ease-in-out-cubic @@:gap-3 @@:rounded-xl @@:px-8 @@:py-4 @@:text-[18px] @@:tracking-[-0.32px];
 
-  &-primary {
-    @apply border-primary bg-primary text-background hover:border-body hover:bg-body;
-  }
+    &-primary {
+      @apply border-primary bg-primary text-background hover:border-body hover:bg-body;
+    }
 
-  &-secondary {
-    @apply border-body bg-background text-primary hover:border-primary hover:bg-backgroundAlt;
+    &-secondary {
+      @apply border-body bg-background text-primary hover:border-primary hover:bg-backgroundAlt;
+    }
   }
 }
