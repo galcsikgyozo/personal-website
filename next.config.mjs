@@ -44,7 +44,6 @@ const nextConfig = {
   images: {
     // loader: 'custom',
     // loaderFile: './src/app/utils/image-loader.ts',
-    domains: [process.env.NEXT_PUBLIC_R2_BUCKET_URL],
   },
 }
 

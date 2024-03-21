@@ -1,5 +1,5 @@
 import React from 'react'
-import R2Image from '@/app/components/ui/r2-image'
+import StaticImage from '@/app/utils/static-image'
 
 import WordLoop from '@/app/components/ui/word-loop'
 // import portraitImage from '~/images/gyozo-galcsik-portrait.webp'
@@ -59,15 +59,13 @@ const FirstImpression: React.FC = () => {
           />
         </svg>
       </div>
-      <R2Image
-        src="/images/gyozo-galcsik-portrait.jpg"
+      <StaticImage
+        src="gyozo-galcsik-portrait.jpg"
         alt="Portrait of Gyozo Galcsik"
         width={0}
         height={0}
         fill={false}
-        sizes="100vw"
-        loading="eager"
-        fetchPriority="high"
+        sizes="50vw"
         priority={true}
         decoding="async"
         className="absolute right-0 top-1/2 -z-[1] h-1/2 w-screen transform object-cover @md:h-[464px] @md:w-96 max-md:[--tw-translate-y:calc(-50%+var(--tw-translate-y-offset))] max-md:@sm:[--tw-translate-y-offset:96px] md:-translate-y-1/2"
