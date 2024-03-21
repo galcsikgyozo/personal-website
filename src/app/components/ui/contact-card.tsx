@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import borderGradient from './borderGradient.module.scss'
-
 import { cn } from '@/app/utils/cn'
 
 interface ContactCardProps {
@@ -28,7 +26,7 @@ const ContactCard: React.FC<ContactCardProps> = ({
       target={href?.startsWith('http') ? '_blank' : undefined}
       rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
       className={cn(
-        `${borderGradient.wrapper} contact-card flex flex-col @@:gap-y-6 @@:rounded-xl @@:px-6 @@:py-9`,
+        `border-gradient contact-card flex flex-col @@:gap-y-6 @@:rounded-xl @@:px-6 @@:py-9`,
         className
       )}
     >

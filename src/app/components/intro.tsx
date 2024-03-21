@@ -5,8 +5,6 @@ import Balancer from 'react-wrap-balancer'
 import Image from 'next/image'
 import Anchor from '@/app/utils/link'
 
-import styles from './intro.module.scss'
-
 const Intro: React.FC = () => {
   return (
     <section
@@ -64,11 +62,11 @@ const Intro: React.FC = () => {
       />
       <div
         id="mapPointBrussels"
-        className={`${styles.mapPoint} absolute rounded-full bg-primary @@:size-2 @sm:bottom-[264px] @sm:right-[288px] @md:bottom-[300px] @md:right-[236px] @lg:bottom-[330px] @lg:right-[256px]`}
+        className={`before:animate-scale-and-fade-out absolute rounded-full bg-primary before:absolute before:left-1/2 before:top-1/2 before:h-full before:w-full before:origin-center before:rounded-full before:bg-primary before:content-[""] @@:size-2 @sm:bottom-[264px] @sm:right-[288px] @md:bottom-[300px] @md:right-[236px] @lg:bottom-[330px] @lg:right-[256px]`}
       />
       <div
         id="mapPointBudapest"
-        className={`${styles.mapPoint} absolute rounded-full bg-primary @@:size-2 @sm:bottom-[204px] @sm:right-[82px] @md:bottom-[256px] @md:right-20 @lg:bottom-[272px] @lg:right-[50px]`}
+        className={`before:animate-scale-and-fade-out absolute rounded-full bg-primary before:absolute before:left-1/2 before:top-1/2 before:h-full before:w-full before:origin-center before:rounded-full before:bg-primary before:content-[""] @@:size-2 @sm:bottom-[204px] @sm:right-[82px] @md:bottom-[256px] @md:right-20 @lg:bottom-[272px] @lg:right-[50px]`}
       />
     </section>
   )

@@ -55,6 +55,21 @@ const config: Config = {
       colors: styleConfig.themeColors,
       ...extendGrid24,
       ...extendEasings,
+      keyframes: {
+        scaleAndFadeOut: {
+          '0%': {
+            transform: 'translate(-50%, -50%) scale(1)',
+            opacity: '0.35',
+          },
+          '100%': {
+            transform: 'translate(-50%, -50%) scale(10)',
+            opacity: '0',
+          },
+        },
+      },
+      animation: {
+        'scale-and-fade-out': 'scaleAndFadeOut 2s linear infinite',
+      },
     },
   },
   plugins: [
