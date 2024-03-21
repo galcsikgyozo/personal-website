@@ -10,7 +10,7 @@ interface ImageLoaderProps {
 }
 
 const imageLoader = ({ src, width, quality }: ImageLoaderProps) => {
-  return `${process.env.NEXT_PUBLIC_R2_BUCKET_URL || ''}/${src
+  return `${process.env.NEXT_PUBLIC_SITE_URL || ''}/images/optimized/${src
     .replace(/^\//, '')
     .replace(/\.(jpe?g|png)$/, '')}-${width}.webp`
 }
