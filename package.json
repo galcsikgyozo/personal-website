@@ -1,7 +1,24 @@
 {
-  "name": "personal-website",
-  "version": "0.1.0",
-  "private": true,
+  "name": "gyozo-galcsik-website",
+  "version": "1.0.0",
+  "description": "Gyozo Galcsik's personal website",
+  "keywords": [
+    "next",
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwindcss",
+    "webpack",
+    "postcss",
+    "gyozo",
+    "galcsik"
+  ],
+  "homepage": "https://gyozo.me",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/galcsikgyozo/personal-website.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -12,11 +12,11 @@ const Contact: React.FC = () => {
       </h3>
       <div className="contact-card-wrapper gap-x-base col-span-12 grid grid-cols-1 @sm:gap-y-4 md:col-span-24 md:grid-cols-3">
         <ContactCard
-          href="mailto:hello@gyozogalcsik.com"
+          href="mailto:hello@gyozo.me"
           src="/images/icon-envelope.svg"
           alt="Email icon"
           label="Say hello in an email"
-          title="hello@gyozogalcsik.com"
+          title="hello@gyozo.me"
         />
         <ContactCard
           href="https://www.linkedin.com/in/galcsikgyozo"
