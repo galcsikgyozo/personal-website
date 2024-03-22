@@ -1,4 +1,3 @@
-import React from 'react'
 import StaticImage from '@/app/utils/static-image'
 
 import WordLoop from '@/app/components/ui/word-loop'

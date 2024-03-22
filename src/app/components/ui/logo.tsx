@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Anchor from '@/app/utils/link'
 import Image from 'next/image'
 

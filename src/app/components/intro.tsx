@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Balancer from 'react-wrap-balancer'
 
 import Image from 'next/image'
@@ -62,11 +60,11 @@ const Intro: React.FC = () => {
       />
       <div
         id="mapPointBrussels"
-        className={`before:animate-scale-and-fade-out absolute rounded-full bg-primary before:absolute before:left-1/2 before:top-1/2 before:h-full before:w-full before:origin-center before:rounded-full before:bg-primary before:content-[""] @@:size-2 @sm:bottom-[264px] @sm:right-[288px] @md:bottom-[300px] @md:right-[236px] @lg:bottom-[330px] @lg:right-[256px]`}
+        className={`absolute rounded-full bg-primary before:absolute before:left-1/2 before:top-1/2 before:h-full before:w-full before:origin-center before:animate-scale-and-fade-out before:rounded-full before:bg-primary before:content-[""] @@:size-2 @sm:bottom-[264px] @sm:right-[288px] @md:bottom-[300px] @md:right-[236px] @lg:bottom-[330px] @lg:right-[256px]`}
       />
       <div
         id="mapPointBudapest"
-        className={`before:animate-scale-and-fade-out absolute rounded-full bg-primary before:absolute before:left-1/2 before:top-1/2 before:h-full before:w-full before:origin-center before:rounded-full before:bg-primary before:content-[""] @@:size-2 @sm:bottom-[204px] @sm:right-[82px] @md:bottom-[256px] @md:right-20 @lg:bottom-[272px] @lg:right-[50px]`}
+        className={`absolute rounded-full bg-primary before:absolute before:left-1/2 before:top-1/2 before:h-full before:w-full before:origin-center before:animate-scale-and-fade-out before:rounded-full before:bg-primary before:content-[""] @@:size-2 @sm:bottom-[204px] @sm:right-[82px] @md:bottom-[256px] @md:right-20 @lg:bottom-[272px] @lg:right-[50px]`}
       />
     </section>
   )

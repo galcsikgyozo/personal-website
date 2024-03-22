@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Logo from '@/app/components/ui/logo'
 
 const Intro: React.FC = () => {
