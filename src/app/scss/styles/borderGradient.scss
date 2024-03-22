@@ -1,5 +1,5 @@
 .border-gradient {
-  @apply relative m-auto;
+  @apply relative;
   @apply bg-background bg-clip-padding transition-colors duration-300 ease-out-cubic hover:bg-background/95;
   @apply border-solid border-transparent @@:border-[1px];
 
