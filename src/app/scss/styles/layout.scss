@@ -7,7 +7,7 @@
   html {
     @apply overflow-x-hidden [scrollbar-gutter:stable];
     // @apply overscroll-none;
-    // @apply @sm:scroll-pt-20 @md:scroll-pt-24 @lg:scroll-pt-28;
+    @apply @sm:scroll-pt-20 @md:scroll-pt-24 @lg:scroll-pt-28;
   }
 
   body {
