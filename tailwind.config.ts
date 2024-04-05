@@ -7,6 +7,7 @@ import {
   extendGrid24,
   extendEasings,
   pluginIs,
+  pluginNot,
   pluginNth,
   pluginAnimateDelay,
   pluginOverrideDisabled,
@@ -74,6 +75,7 @@ const config: Config = {
   },
   plugins: [
     pluginIs,
+    pluginNot,
     pluginNth,
     pluginAnimateDelay,
     pluginOverrideDisabled,

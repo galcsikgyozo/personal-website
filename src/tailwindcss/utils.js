@@ -217,3 +217,16 @@ exports.pluginIs = plugin(function ({ matchVariant }) {
     return `:merge(.peer):is(${value}) ~ &`
   })
 })
+
+// :not() pseudo-class
+exports.pluginNot = plugin(function ({ matchVariant }) {
+  matchVariant('not', (value) => {
+    return `&:not(${value})`
+  })
+  matchVariant('group-not', (value) => {
+    return `:merge(.group):not(${value}) &`
+  })
+  matchVariant('peer-not', (value) => {
+    return `:merge(.peer):not(${value}) ~ &`
+  })
+})
