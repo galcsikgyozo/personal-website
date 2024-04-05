@@ -2,7 +2,7 @@ import ContactCard from '@/app/components/ui/contact-card'
 
 const Contact: React.FC = () => {
   return (
-    <section id="contact" className="px-container grid-base">
+    <section id="contact" className="px-container grid-base pt-0">
       <h3 className="h3 col-span-12 text-primary @sm:mb-8 @md:mb-12 @lg:mb-16 md:col-span-12 md:col-start-7 md:text-center">
         Got a project for me?
         <br />
