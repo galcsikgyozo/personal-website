@@ -19,11 +19,24 @@ const CursorFollower: React.FC = () => {
 
   return (
     <>
+      <style jsx>{`
+        @keyframes cursorFollowerSpin {
+          0% {
+            transform: translate3d(-50%, -50%, 0) rotate(0deg);
+          }
+          100% {
+            transform: translate3d(-50%, -50%, 0) rotate(360deg);
+          }
+        }
+        #cursor-follower {
+          animation: cursorFollowerSpin 10s linear infinite;
+        }
+      `}</style>
       <div
         id="cursor-follower"
-        className={`pointer-events-none fixed -z-20 rounded-full bg-body transition-transform duration-[3s] ease-out-cubic [translate:-50%_-50%] size-[512px] blur-[192px]`}
+        className={`pointer-events-none fixed -z-20 h-[768px] w-[512px] rounded-full bg-body blur-[192px] transition-[translate] duration-[3s] ease-out-cubic`}
         style={{
-          transform: `translate3d(${cursorPosition.x}px, ${cursorPosition.y}px, 0) rotate(-45deg) scaleY(1.5)`,
+          translate: `${cursorPosition.x}px ${cursorPosition.y}px`,
         }}
       />
       <div className="pointer-events-none fixed left-0 top-0 -z-10 h-screen w-screen bg-background/75" />
