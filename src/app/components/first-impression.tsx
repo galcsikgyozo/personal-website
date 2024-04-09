@@ -41,6 +41,7 @@ const FirstImpression: React.FC = () => {
       <div
         className="first-impression-helper label w-container absolute left-1/2 flex -translate-x-1/2 transform flex-col items-center justify-center text-body @sm:bottom-16 @sm:gap-y-2 @md:bottom-24 @md:gap-y-3 @lg:bottom-16 @lg:gap-y-3"
         role="presentation"
+        aria-hidden="true"
       >
         <span className="first-impression-helper-text pointer-events-none whitespace-nowrap">
           Scroll down for more information
