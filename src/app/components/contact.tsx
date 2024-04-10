@@ -1,13 +1,19 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useWindowSize } from '@/app/utils/useWindowSize'
 
+import { useRef } from 'react'
 import { useScroll, useTransform } from 'framer-motion'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 
 import ContactCard from '@/app/components/ui/contact-card'
 
 const Contact: React.FC = () => {
+  /**
+   * Screen size state
+   */
+  const screenSize = useWindowSize()
+
   /**
    * Defining reference and scrollYProgress
    */
@@ -16,31 +22,6 @@ const Contact: React.FC = () => {
     target: ref,
     offset: ['start end', 'end end'],
   })
-
-  /**
-   * Screen size state
-   */
-  const [screenSize, setScreenSize] = useState('small')
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const handleResize = () => {
-        if (window.innerWidth >= 640) {
-          setScreenSize('large')
-        } else {
-          setScreenSize('small')
-        }
-      }
-
-      handleResize()
-
-      window.addEventListener('resize', handleResize)
-
-      return () => {
-        window.removeEventListener('resize', handleResize)
-      }
-    }
-  }, [])
 
   /**
    * Transform (translate) logic for the motion of the contact cards
