@@ -5,20 +5,21 @@ export const useWindowSize = () => {
   const [screenSize, setScreenSize] = useState<string>('')
 
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= styleConfig.breakpoints.md) {
-        setScreenSize('large')
-      } else {
-        setScreenSize('small')
-      }
+    const updateScreenSize = () => {
+      const { md, lg } = styleConfig.breakpoints
+      const width = window.innerWidth
+
+      const screenSize = width >= lg ? 'lg' : width >= md ? 'md' : 'sm'
+
+      setScreenSize(screenSize)
     }
 
-    handleResize()
+    updateScreenSize()
 
-    window.addEventListener('resize', handleResize)
+    window.addEventListener('resize', updateScreenSize)
 
     return () => {
-      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('resize', updateScreenSize)
     }
   }, [])
 

@@ -52,8 +52,7 @@ const Contact: React.FC = () => {
       <section id="contact" className="px-container grid-base pt-0" ref={ref}>
         <m.h3
           style={{
-            opacity:
-              screenSize === 'large' ? animateOpacityLg : animateOpacitySm,
+            opacity: screenSize === 'sm' ? animateOpacitySm : animateOpacityLg,
           }}
           className="h3 col-span-12 text-primary @sm:mb-8 @md:mb-12 @lg:mb-16 md:col-span-12 md:col-start-7 md:text-center"
         >

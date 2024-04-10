@@ -42,7 +42,7 @@ const Intro: React.FC = () => {
   const translateNone = useTransform(scrollYProgress, [0.1, 0.9], [0, 0])
 
   const calculateYTransform = (index: number) => {
-    if (screenSize === 'large') {
+    if (screenSize === 'lg' || screenSize === 'md') {
       if (index === logos.length - 3) {
         return translateBase // third to last logo
       } else if (index === logos.length - 2) {

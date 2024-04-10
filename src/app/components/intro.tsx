@@ -47,7 +47,7 @@ const Intro: React.FC = () => {
             className="intro-title h2 text-primary"
             style={{
               opacity:
-                screenSize === 'large' ? animateOpacityLg : animateOpacitySm,
+                screenSize === 'sm' ? animateOpacitySm : animateOpacityLg,
             }}
           >
             Professional Digital&nbsp;Native based in
@@ -57,7 +57,7 @@ const Intro: React.FC = () => {
             className="intro-content base @md:pr-10 @sm:[&_*:not(:last-child)]:mb-4 @md:[&_*:not(:last-child)]:mb-6 @lg:[&_*:not(:last-child)]:mb-6 [&_strong]:font-normal [&_strong]:text-primary"
             style={{
               opacity:
-                screenSize === 'large' ? animateOpacityLg : animateOpacitySm,
+                screenSize === 'sm' ? animateOpacitySm : animateOpacityLg,
             }}
           >
             <Balancer ratio={1} preferNative={false}>
@@ -81,7 +81,7 @@ const Intro: React.FC = () => {
             className="intro-buttons-holder flex flex-col items-center justify-start @sm:gap-4 @md:gap-6 @lg:gap-8 md:flex-row"
             style={{
               opacity:
-                screenSize === 'large' ? animateOpacityLg : animateOpacitySm,
+                screenSize === 'sm' ? animateOpacitySm : animateOpacityLg,
             }}
           >
             <Anchor
