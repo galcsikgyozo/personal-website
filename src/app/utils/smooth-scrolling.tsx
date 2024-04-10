@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
 
 function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
