@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useLayoutEffect, useState } from 'react'
+import { useState, useLayoutEffect } from 'react'
 
 const CursorFollower: React.FC = () => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
@@ -34,7 +34,7 @@ const CursorFollower: React.FC = () => {
       `}</style>
       <div
         id="cursor-follower"
-        className={`pointer-events-none fixed -z-20 h-[768px] w-[512px] rounded-full bg-body blur-[192px] transition-[translate] duration-[3s] ease-out-cubic`}
+        className={`pointer-events-none fixed -z-20 h-[1024px] w-[320px] rounded-[100%] bg-body blur-[192px] transition-[translate] duration-[3s] ease-out-cubic`}
         style={{
           translate: `${cursorPosition.x}px ${cursorPosition.y}px`,
         }}
