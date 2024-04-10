@@ -115,7 +115,7 @@ const FirstImpression: React.FC = () => {
           >
             Scroll down for more information
           </Anchor>
-          <Anchor href="#intro">
+          <Anchor href="#intro" aria-label="Scroll to introduction">
             <svg
               className="first-impression-helper-icon overflow-visible object-contain @sm:size-2 @md:size-3 @lg:size-4"
               xmlns="http://www.w3.org/2000/svg"
