@@ -1,12 +1,9 @@
 'use client'
 
-import {
-  LazyMotion,
-  domAnimation,
-  m,
-  useScroll,
-  useTransform,
-} from 'framer-motion'
+import { useRef } from 'react'
+
+import { useScroll, useTransform } from 'framer-motion'
+import { LazyMotion, domAnimation, m } from 'framer-motion'
 
 import Anchor from '@/app/utils/link'
 import StaticImage from '@/app/utils/static-image'
@@ -14,15 +11,28 @@ import StaticImage from '@/app/utils/static-image'
 import WordLoop from '@/app/components/ui/word-loop'
 
 const FirstImpression: React.FC = () => {
+  /**
+   * Defining reference and scrollYProgress
+   */
+  const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({
-    offset: ['start end', 'end end'],
+    target: ref,
+    offset: ['start end', 'end start'],
   })
-  const animateTranslate = useTransform(scrollYProgress, [0, 1], ['35%', '90%'])
 
+  /**
+   * Transform (translate) logic for the motion of the portrait
+   */
+  const animateTranslate = useTransform(scrollYProgress, [0, 1], ['40%', '60%'])
+
+  /**
+   * Render the component
+   */
   return (
     <LazyMotion features={domAnimation}>
       <section
         id="first-impression"
+        ref={ref}
         className="px-container grid-base relative h-svh @sm:pb-12 @sm:pt-36 @md:py-24 @lg:py-32 md:max-h-[75vw] md:min-h-[50vw]"
       >
         <h1 className="first-text display col-span-12 flex flex-col text-primary @sm:gap-y-4 @md:gap-y-6 @lg:gap-y-9 md:col-span-17 md:self-center">

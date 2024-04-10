@@ -1,41 +1,18 @@
 'use client'
 
-import {
-  LazyMotion,
-  domAnimation,
-  m,
-  useScroll,
-  useTransform,
-} from 'framer-motion'
+import { useState, useEffect, useRef } from 'react'
 
-import { useEffect, useRef, useState } from 'react'
+import { useScroll, useTransform } from 'framer-motion'
+import { LazyMotion, domAnimation, m } from 'framer-motion'
 
 import { cn } from '../utils/cn'
 
 import Logo from '@/app/components/ui/logo'
 
 const Intro: React.FC = () => {
-  const ref = useRef<any>(null)
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'end start'],
-  })
-
-  const translateMore = useTransform(
-    scrollYProgress,
-    [0.25, 0.75],
-    ['100%', '-25%']
-  )
-  const translateBase = useTransform(
-    scrollYProgress,
-    [0.25, 0.75],
-    ['50%', '-10%']
-  )
-  const translateNone = useTransform(scrollYProgress, [0.1, 0.9], [0, 0])
-
-  const animateOpacitySm = useTransform(scrollYProgress, [0.1, 0.3], [0, 1])
-  const animateOpacityLg = useTransform(scrollYProgress, [0.1, 0.5], [0, 1])
-
+  /**
+   * Screen size state
+   */
   const [screenSize, setScreenSize] = useState('small')
 
   useEffect(() => {
@@ -58,6 +35,63 @@ const Intro: React.FC = () => {
     }
   }, [])
 
+  /**
+   * Defining reference and scrollYProgress
+   */
+  const ref = useRef<any>(null)
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  })
+
+  /**
+   * Transform (translate) logic for the motion of the logos
+   */
+  const translateMore = useTransform(
+    scrollYProgress,
+    [0.25, 0.75],
+    ['100%', '-25%']
+  )
+  const translateBase = useTransform(
+    scrollYProgress,
+    [0.25, 0.75],
+    ['50%', '-10%']
+  )
+  const translateNone = useTransform(scrollYProgress, [0.1, 0.9], [0, 0])
+
+  const calculateYTransform = (index: number) => {
+    if (screenSize === 'large') {
+      if (index === logos.length - 3) {
+        return translateBase // third to last logo
+      } else if (index === logos.length - 2) {
+        return translateNone // second to last logo
+      } else if (index === logos.length - 1) {
+        return translateBase // last logo
+      } else {
+        // Regular logo
+        if (index % 5 === 0 || index % 5 === 4) {
+          return translateMore
+        } else if (index % 5 === 1 || index % 5 === 3) {
+          return translateBase
+        } else {
+          return translateNone
+        }
+      }
+    } else {
+      return translateNone
+    }
+  }
+
+  /**
+   * Different opacity animations for small and large screens
+   */
+  const animateOpacitySm = useTransform(scrollYProgress, [0.1, 0.3], [0, 1])
+  const animateOpacityLg = useTransform(scrollYProgress, [0.1, 0.5], [0, 1])
+
+  /**
+   * Data
+   */
   const logos = [
     {
       href: 'https://atelierdesign.be',
@@ -151,18 +185,18 @@ const Intro: React.FC = () => {
     },
   ]
 
+  /**
+   * Render the component
+   */
   return (
     <LazyMotion features={domAnimation}>
       <section id="logos" className="px-container grid-base relative" ref={ref}>
         <m.h3
           className="h3 col-span-12 text-primary @sm:mb-12 @md:mb-12 @lg:mb-16 md:col-span-18 md:col-start-4 md:text-center"
-          style={
-            screenSize === 'small'
-              ? { opacity: animateOpacitySm }
-              : {
-                  opacity: animateOpacityLg,
-                }
-          }
+          style={{
+            opacity:
+              screenSize === 'large' ? animateOpacityLg : animateOpacitySm,
+          }}
         >
           Some of the companies I&nbsp;worked with in&nbsp;some
           way,&nbsp;shape&nbsp;or form
@@ -174,42 +208,11 @@ const Intro: React.FC = () => {
           {logos.map((logo, index) => (
             <m.div
               key={index}
-              style={
-                screenSize == 'large'
-                  ? {
-                      y:
-                        // third to last logo
-                        index === logos.length - 3
-                          ? translateBase
-                          : // second to last logo
-                            index === logos.length - 2
-                            ? translateNone
-                            : // last logo
-                              index === logos.length - 1
-                              ? translateBase
-                              : // 1st, 6th, 11th, etc. logo
-                                index % 5 === 0
-                                ? translateMore
-                                : // 2nd, 7th, 12th, etc. logo
-                                  index % 5 === 1
-                                  ? translateBase
-                                  : // 3rd, 8th, 13th, etc. logo
-                                    index % 5 === 2
-                                    ? translateNone
-                                    : // 4th, 9th, 14th, etc. logo
-                                      index % 5 === 3
-                                      ? translateBase
-                                      : // 5th, 10th, 15th, etc. logo
-                                        index % 5 === 4
-                                        ? translateMore
-                                        : 0,
-                      opacity: animateOpacityLg,
-                    }
-                  : {
-                      y: translateNone,
-                      opacity: animateOpacitySm,
-                    }
-              }
+              style={{
+                y: calculateYTransform(index),
+                opacity:
+                  screenSize === 'large' ? animateOpacityLg : animateOpacitySm,
+              }}
               className={cn(
                 '@sm:max-md:even:-mb-[52px] @sm:max-md:even:mt-[52px] md:nth-[5n-1]:-mb-12 @@:md:nth-[5n-1]:mt-12 @@:md:nth-[5n-3]:-mb-12 @@:md:nth-[5n-3]:mt-12 @@:md:nth-[5n-4]:-mb-24 @@:md:nth-[5n-4]:mt-24 @@:md:nth-[5n]:-mb-24 @@:md:nth-[5n]:mt-24',
                 // third to last logo

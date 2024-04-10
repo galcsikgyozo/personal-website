@@ -1,36 +1,25 @@
 'use client'
 
-import {
-  LazyMotion,
-  domAnimation,
-  m,
-  useScroll,
-  useTransform,
-} from 'framer-motion'
-import { useRef, useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+
+import { useScroll, useTransform } from 'framer-motion'
+import { LazyMotion, domAnimation, m } from 'framer-motion'
 
 import ContactCard from '@/app/components/ui/contact-card'
 
 const Contact: React.FC = () => {
+  /**
+   * Defining reference and scrollYProgress
+   */
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'end end'],
   })
-  const animateTranslate1 = useTransform(scrollYProgress, [0, 1], ['50%', '0%'])
-  const animateTranslate2 = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ['100%', '0%']
-  )
-  const animateTranslate3 = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ['150%', '0%']
-  )
-  const animateOpacitySm = useTransform(scrollYProgress, [0.1, 0.3], [0, 1])
-  const animateOpacityLg = useTransform(scrollYProgress, [0.1, 0.6], [0, 1])
 
+  /**
+   * Screen size state
+   */
   const [screenSize, setScreenSize] = useState('small')
 
   useEffect(() => {
@@ -53,17 +42,38 @@ const Contact: React.FC = () => {
     }
   }, [])
 
+  /**
+   * Transform (translate) logic for the motion of the contact cards
+   */
+  const animateTranslate1 = useTransform(scrollYProgress, [0, 1], ['50%', '0%'])
+  const animateTranslate2 = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ['100%', '0%']
+  )
+  const animateTranslate3 = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ['150%', '0%']
+  )
+
+  /**
+   * Different opacity animations for small and large screens
+   */
+  const animateOpacitySm = useTransform(scrollYProgress, [0.1, 0.3], [0, 1])
+  const animateOpacityLg = useTransform(scrollYProgress, [0.1, 0.6], [0, 1])
+
+  /**
+   * Render the component
+   */
   return (
     <LazyMotion features={domAnimation}>
       <section id="contact" className="px-container grid-base pt-0" ref={ref}>
         <m.h3
-          style={
-            screenSize === 'small'
-              ? { opacity: animateOpacitySm }
-              : {
-                  opacity: animateOpacityLg,
-                }
-          }
+          style={{
+            opacity:
+              screenSize === 'large' ? animateOpacityLg : animateOpacitySm,
+          }}
           className="h3 col-span-12 text-primary @sm:mb-8 @md:mb-12 @lg:mb-16 md:col-span-12 md:col-start-7 md:text-center"
         >
           Got a project for me?

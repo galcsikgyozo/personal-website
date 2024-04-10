@@ -1,35 +1,19 @@
 'use client'
 
-import Image from 'next/image'
-import Anchor from '@/app/utils/link'
+import { useState, useEffect, useRef } from 'react'
+
+import { useScroll, useTransform } from 'framer-motion'
+import { LazyMotion, domAnimation, m } from 'framer-motion'
 
 import Balancer from 'react-wrap-balancer'
 
-import {
-  LazyMotion,
-  domAnimation,
-  m,
-  useScroll,
-  useTransform,
-} from 'framer-motion'
-
-import { useRef, useState, useEffect } from 'react'
+import Image from 'next/image'
+import Anchor from '@/app/utils/link'
 
 const Intro: React.FC = () => {
-  const ref = useRef<HTMLElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'end start'],
-  })
-  const animateTranslate = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ['10vw', '0vw']
-  )
-
-  const animateOpacitySm = useTransform(scrollYProgress, [0.1, 0.3], [0, 1])
-  const animateOpacityLg = useTransform(scrollYProgress, [0.1, 0.6], [0, 1])
-
+  /**
+   * Screen size state
+   */
   const [screenSize, setScreenSize] = useState('small')
 
   useEffect(() => {
@@ -52,6 +36,24 @@ const Intro: React.FC = () => {
     }
   }, [])
 
+  /**
+   * Defining reference and scrollYProgress
+   */
+  const ref = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  })
+
+  /**
+   * Different opacity animations for small and large screens
+   */
+  const animateOpacitySm = useTransform(scrollYProgress, [0.1, 0.3], [0, 1])
+  const animateOpacityLg = useTransform(scrollYProgress, [0.1, 0.6], [0, 1])
+
+  /**
+   * Render the component
+   */
   return (
     <LazyMotion features={domAnimation}>
       <section
@@ -62,28 +64,20 @@ const Intro: React.FC = () => {
         <div className="introText relative z-[1] col-span-12 flex flex-col @sm:gap-6 @md:gap-9 @lg:gap-9 md:col-span-17 lg:col-span-19">
           <m.h2
             className="intro-title h2 text-primary"
-            style={
-              screenSize === 'small'
-                ? { opacity: animateOpacitySm }
-                : {
-                    // y: animateTranslate,
-                    opacity: animateOpacityLg,
-                  }
-            }
+            style={{
+              opacity:
+                screenSize === 'large' ? animateOpacityLg : animateOpacitySm,
+            }}
           >
             Professional Digital&nbsp;Native based in
             Brussels&nbsp;&&nbsp;Budapest
           </m.h2>
           <m.div
             className="intro-content base @md:pr-10 @sm:[&_*:not(:last-child)]:mb-4 @md:[&_*:not(:last-child)]:mb-6 @lg:[&_*:not(:last-child)]:mb-6 [&_strong]:font-normal [&_strong]:text-primary"
-            style={
-              screenSize === 'small'
-                ? { opacity: animateOpacitySm }
-                : {
-                    // y: animateTranslate,
-                    opacity: animateOpacityLg,
-                  }
-            }
+            style={{
+              opacity:
+                screenSize === 'large' ? animateOpacityLg : animateOpacitySm,
+            }}
           >
             <Balancer ratio={1} preferNative={false}>
               <p>
@@ -104,14 +98,10 @@ const Intro: React.FC = () => {
           </m.div>
           <m.div
             className="intro-buttons-holder flex flex-col items-center justify-start @sm:gap-4 @md:gap-6 @lg:gap-8 md:flex-row"
-            style={
-              screenSize === 'small'
-                ? { opacity: animateOpacitySm }
-                : {
-                    // y: animateTranslate,
-                    opacity: animateOpacityLg,
-                  }
-            }
+            style={{
+              opacity:
+                screenSize === 'large' ? animateOpacityLg : animateOpacitySm,
+            }}
           >
             <Anchor
               href="/files/gyozo-galcsik-cv-2024.pdf"
