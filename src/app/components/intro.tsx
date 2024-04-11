@@ -90,7 +90,7 @@ const Intro: React.FC = () => {
               className="button button-primary max-md:w-full"
             >
               Download my CV
-            </Anchor>
+            </Anchor>{' '}
             <Anchor
               href="#contact"
               className="button button-secondary max-md:w-full"
